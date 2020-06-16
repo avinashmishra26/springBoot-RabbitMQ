@@ -19,5 +19,6 @@ springBoot+Rabbit
     d) RabbitMQ web dashboard
         http://localhost:15672
 
-2. This project contains example based on Direct & Topic exchanges because these are mostly used in industry
+2. This project contains example based on Direct & Topic exchanges because these are mostly used in industry.
+
     Fanout Exchange, Headers Exchange or Dead Letter Exchange are not included.
