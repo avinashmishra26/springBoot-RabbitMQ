@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'groovy'
+    id 'idea'
+}
+
+
+group 'com.avinash.springBoot'
+version '1.0-SNAPSHOT'
+
+project.ext {
+
+    springFrameworkVersion = '5.1.2.RELEASE'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp'
+    compile "org.springframework:spring-context-support:$springFrameworkVersion"
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+springBoot {
+    mainClassName = 'com.avinash.spring.integration.rabbit.SpringRabbitApplication'
+}

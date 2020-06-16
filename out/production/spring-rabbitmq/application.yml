@@ -1,0 +1,19 @@
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+rabbitmq :
+    avinash-directExchange :
+      queue : avi-queue
+      exchange : avi-exchange
+      routingkey : avi-routekey
