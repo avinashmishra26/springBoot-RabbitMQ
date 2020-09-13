@@ -41,7 +41,7 @@ public class TopicExchangeRabbitMQConfig {
     }
 
     @Bean
-    Binding allbinding(){
+    Binding allBinding(){
         return BindingBuilder.bind(allQueue()).to(topicExchange()).with(ALL_ROUTING_KEY);
     }
 
@@ -51,7 +51,7 @@ public class TopicExchangeRabbitMQConfig {
     }
 
     @Bean
-    Binding empbinding(){
+    Binding empBinding(){
         return BindingBuilder.bind(empQueue()).to(topicExchange()).with(EMPLOYEE_ROUTING_KEY);
     }
 
@@ -61,7 +61,7 @@ public class TopicExchangeRabbitMQConfig {
     }
 
     @Bean
-    Binding salesbinding(){
+    Binding salesBinding(){
         return BindingBuilder.bind(salesQueue()).to(topicExchange()).with(SALES_ROUTING_KEY);
     }
 }

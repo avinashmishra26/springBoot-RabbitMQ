@@ -16,18 +16,30 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DirectExchangeRabbitMQConfig {
 
-    @Value("${rabbitmq.avinash-directExchange.queue}")
-    String queue;
-
     @Value("${rabbitmq.avinash-directExchange.exchange}")
     String exchange;
+
+    @Value("${rabbitmq.avinash-directExchange.queue}")
+    String queue;
 
     @Value("${rabbitmq.avinash-directExchange.routingkey}")
     private String routingkey;
 
+
+    @Value("${rabbitmq.avinash-directExchange.depart-queue}")
+    String depart_queue;
+
+    @Value("${rabbitmq.avinash-directExchange.depart-routingkey}")
+    private String depart_routingkey;
+
     @Bean
     Queue queue() {
         return new Queue(queue, false);
+    }
+
+    @Bean
+    Queue departQueue() {
+        return new Queue(depart_queue, false);
     }
 
     @Bean
@@ -41,14 +53,8 @@ public class DirectExchangeRabbitMQConfig {
     }
 
     @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
+    Binding bindingDepart(Queue departQueue, DirectExchange exchange){
+        return BindingBuilder.bind(departQueue).to(exchange).with(depart_routingkey);
     }
 
-    @Bean
-    public AmqpTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(jsonMessageConverter());
-        return rabbitTemplate;
-    }
 }

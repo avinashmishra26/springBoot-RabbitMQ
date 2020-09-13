@@ -5,6 +5,7 @@
 package com.avinash.spring.integration.rabbit.web;
 
 
+import com.avinash.spring.integration.rabbit.model.Department;
 import com.avinash.spring.integration.rabbit.model.Employee;
 import com.avinash.spring.integration.rabbit.service.RabbitMQSenderTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,15 @@ public class RabbitProducerController {
     @Autowired
     RabbitMQSenderTemplate rabbitMQSenderTemplate;
 
-    @RequestMapping(value = "/produce", method = RequestMethod.POST)
+    @RequestMapping(value = "/produce/emp", method = RequestMethod.POST)
     public ResponseEntity producerMessage(@RequestBody Employee employee) {
         rabbitMQSenderTemplate.sendMessage(employee);
+        return new ResponseEntity("Message Sent", HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(value = "/produce/depart", method = RequestMethod.POST)
+    public ResponseEntity producerMessageDepart(@RequestBody Department department) {
+        rabbitMQSenderTemplate.sendMessage(department);
         return new ResponseEntity("Message Sent", HttpStatus.ACCEPTED);
     }
 
