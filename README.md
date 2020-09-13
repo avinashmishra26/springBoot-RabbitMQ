@@ -7,8 +7,8 @@ springBoot+Rabbit
     a) brew install rabbitmq
 
     b) Inside the .bash_profile file add the following lines
-        #HOMEBREW RABBITMQ
-        export HOMEBREW_RABBITMQ=/usr/local/Cellar/rabbitmq/3.8.3/sbin/
+        #HOME RABBITMQ
+        export RABBITMQ_HOME=/usr/local/Cellar/rabbitmq/3.8.3/sbin/
         export PATH=$PATH:$HOMEBREW_RABBITMQ
 
 
